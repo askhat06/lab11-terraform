@@ -1,0 +1,11 @@
+upstream web_servers {
+  zone web_servers 64k; # share round-robin state between nginx workers
+%{ for s in servers ~}
+  server ${s}:80;
+%{ endfor ~}
+}
+
+server {
+  listen 80;
+  location / { proxy_pass http://web_servers; }
+}
