@@ -7,7 +7,7 @@ variable "prefix" {
 variable "web_count" {
   description = "How many web containers (the 'desired capacity')"
   type        = number
-  default     = 2
+  default     = 3
 
   validation {
     condition     = var.web_count >= 1 && var.web_count <= 5
